@@ -37,7 +37,7 @@
     border: 1px solid white;
     border-radius: 6px;
     text-align: right;
-    font-family: Digital;
+    font-family: 'Digital', Roboto, sans-serif;
     font-size: 6em;
     color: rgb(0, 253, 0);
 }
@@ -54,7 +54,7 @@
 
 button {
     font-size: 3em;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
 }
 
