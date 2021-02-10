@@ -34,15 +34,16 @@
     padding: 10px;
     height: 50px;
     background-color: black;
-    border: 1px solid ;
+    border: 1px solid white;
     border-radius: 6px;
     text-align: right;
     font-family: Digital;
     font-size: 6em;
-    color: white;
+    color: rgb(0, 253, 0);
 }
 
 .calc-buttons {
+    margin: 20px 0;
     display: grid;
     grid-template-columns: repeat(4, 85px);
     grid-template-rows: repeat(5, 60px);
@@ -99,5 +100,3 @@ button:active {
     background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
     background-image: linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
 }
-
-
