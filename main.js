@@ -4,20 +4,54 @@ document.addEventListener("DOMContentLoaded", function () {
         cleraBtns = document.querySelectorAll('.btn-clear'),
         decimalBtn = document.getElementById('decimal'),
         display = document.getElementById('display'),
+        errorText = document.getElementById('error-text'),
         MemoryCurrentNumber = 0,
         MemoryNewNumber = false,
         MemoryPandingOperation = '';
 
 
+    let matchMaxLength = (value) => {
+        if (display.value.length <= display.getAttribute('maxlength')) {
+            return true;
+        }
+        return false;
+    };
+
+    let clearCalculationError = () => errorText.innerHTML = '';
+
+    let setCalculationError = (text) => errorText.innerHTML = text;
+
+    let getDistlayValue = () => {
+        return display.value;
+    };
+
+
+    let manageDisplay = (value, operation) => {
+        clearCalculationError();
+
+        if (matchMaxLength(value)) {
+            display.value = value;
+        } else {
+            if (operation == 'result') {
+                setCalculationError('MaxLength error.');
+            };
+        };
+    };
+
+
     let numberPress = (number) => {
+        clearCalculationError();
+        
+        let currentsDisplayValue = getDistlayValue();
+
         if (MemoryNewNumber) {
-            display.value = number;
+            manageDisplay(number, 'input');
             MemoryNewNumber = false;
         } else {
-            if (display.value === '0') {
-                display.value = number;
+            if (currentsDisplayValue === '0') {
+                manageDisplay(number, 'input');
             } else {
-                display.value += number;
+                manageDisplay(currentsDisplayValue + number, 'input');
             };
         };
     };
@@ -37,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     let operation = (opere) => {
-        let localOperationMemory = display.value;
+        let localOperationMemory = getDistlayValue();
 
         if (MemoryNewNumber && MemoryPandingOperation !== '=') {
             display.value = MemoryCurrentNumber;
